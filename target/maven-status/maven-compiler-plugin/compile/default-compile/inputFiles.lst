@@ -1,0 +1,10 @@
+/home/soumyodeep/projects/smartcontacts/src/main/java/com/example/smartcontacts/SmartConfig/Config.java
+/home/soumyodeep/projects/smartcontacts/src/main/java/com/example/smartcontacts/SmartConfig/UserDetailsServiceImpl.java
+/home/soumyodeep/projects/smartcontacts/src/main/java/com/example/smartcontacts/DAO/UserRepository.java
+/home/soumyodeep/projects/smartcontacts/src/main/java/com/example/smartcontacts/Entities/Contacts.java
+/home/soumyodeep/projects/smartcontacts/src/main/java/com/example/smartcontacts/Helper/Message.java
+/home/soumyodeep/projects/smartcontacts/src/main/java/com/example/smartcontacts/Entities/User.java
+/home/soumyodeep/projects/smartcontacts/src/main/java/com/example/smartcontacts/SmartcontactsApplication.java
+/home/soumyodeep/projects/smartcontacts/src/main/java/com/example/smartcontacts/Controllers/HomeController.java
+/home/soumyodeep/projects/smartcontacts/src/main/java/com/example/smartcontacts/SmartConfig/CustomUserDetails.java
+/home/soumyodeep/projects/smartcontacts/src/main/java/com/example/smartcontacts/Controllers/UserController.java

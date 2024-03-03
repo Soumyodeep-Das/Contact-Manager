@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{users/base::layout(~{::section})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+</head>
+
+<body>
+    <section class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mb-4 mb-sm-5">
+                    <div class="card card-style1 border-0">
+                        <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 mb-4 mb-lg-0">
+                                    <img th:src="@{'/images/'+${contact.image}}" alt="profile_picture" style="height: 40%; width: 40%; border-radius: 10%;">
+                                </div>
+                                <div class="col-lg-6 px-xl-10">
+                                    <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
+                                        <h3 class="h2 text-white mb-0" th:text="${contact.name}"></h3>
+                                        <span class="text-primary" th:text="${contact.nickname}"></span>
+                                    </div>
+                                    <ul class="list-unstyled mb-1-9">
+                                        <li class="mb-2 mb-xl-3 display-28"><span
+                                                class="display-26 text-secondary me-2 font-weight-600">Contact Id:</span>
+                                                <span th:text="${contact.cId}" style="font-weight: bold; font-size: large;"></span>
+                                            </li>
+                                        <li class="mb-2 mb-xl-3 display-28"><span
+                                                class="display-26 text-secondary me-2 font-weight-600">Work:</span>
+                                                <span th:text="${contact.work}" style="font-weight: bold; font-size: large;"></span>
+                                            </li>
+                                        <li class="mb-2 mb-xl-3 display-28"><span
+                                                class="display-26 text-secondary me-2 font-weight-600">Email:</span>
+                                                <span th:text="${contact.email}" style="font-weight: bold; font-size: large;"></span>
+                                            </li>
+                                        <li class="display-28"><span
+                                                class="display-26 text-secondary me-2 font-weight-600">Phone:</span>
+                                                <span th:text="${contact.phone}" style="font-weight: bold; font-size: large;"></span> </li>
+                                        <li class="mb-2 mb-xl-3 display-28"><span
+                                                class="display-26 text-secondary me-2 font-weight-600">Address:</span>
+                                                <span th:text="${contact.address}" style="font-weight: bold; font-size: large;"></span>
+                                            </li>
+                                    </ul>
+                                    <div class="d-flex align-items-center">
+                                        <!-- <a href="#" class="btn btn-primary btn-sm me-2" th:href="@{'/user/update/'+${contact.cId}}">Edit</a> -->
+                                        <form th:action="@{'/user/update/'+${contact.cId}}" method="post" style="padding-right: 10px;">
+                                            <button type="submit" class="btn btn-primary btn-sm">
+                                                Edit
+                                            </button>
+                                        </form>
+                                        <a href="#" th:onclick="'deleteContact(' + ${contact.cId} + ')'" class="btn btn-danger btn-sm">Delete</a>
+                                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 mb-4 mb-sm-5">
+                    <div>
+                        <span class="section-title text-primary mb-3 mb-sm-4">About Me</span>
+                        <p th:text="${contact.description}"></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

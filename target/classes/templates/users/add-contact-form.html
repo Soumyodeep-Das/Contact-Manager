@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{users/base::layout(~{::section})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+</head>
+
+<body>
+    <section>
+        <!-- <h1>Welcome to the add contacts</h1>
+        <h1>Name : <span th:text="${user.name}"></span></h1>
+        <h1>Email : <span th:text="${user.email}"></span></h1>
+        <h1>About : <span th:text="${user.about}"></span></h1>
+        <h1><a th:href="@{/logout}">Log Out</a></h1> -->
+        <div class="container">
+            <h2 class="text-center mt-5 mb-4">User Information</h2>
+            <div th:if="${session.message}" class="text-center alert" th:classappend="${'alert-'+session.message.type}" role="alert">
+                <span th:text="${session.message.content}"></span>
+                <!-- <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+                     -->
+            </div>
+            <form th:action="@{/user/process-contact}" th:object="${contact}" enctype="multipart/form-data" method="post">
+              <!-- <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" class="form-control" id="fullName" placeholder="Enter full name">
+              </div> -->
+
+
+              <div class="input-group mb-3">
+                
+                    <span class="input-group-text" id="basic-addon1"><span class="material-symbols-outlined">
+                        person
+                        </span></span>
+                <input type="text" name="name" class="form-control" placeholder="Enter Full Name" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+
+
+              <!-- <div class="form-group">
+                <label for="nickName">NickName</label>
+                <input type="text" class="form-control" id="nickName" placeholder="Enter nickname">
+              </div> -->
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><span class="material-symbols-outlined">
+                    mood
+                    </span></span>
+                
+                <input type="text" name="nickname" class="form-control" placeholder="NickName" aria-label="Username" 1aria-describedby="basic-addon1">
+              </div>
+
+              <!-- <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email">
+              </div> -->
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><span class="material-symbols-outlined">
+                    mail
+                    </span></span>
+                <input type="email" name="email" class="form-control" placeholder="Email Id" aria-label="Username" 1aria-describedby="basic-addon1">
+              </div>
+
+
+              <!-- <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" class="form-control" id="phone" placeholder="Enter phone number">
+              </div> -->
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><span class="material-symbols-outlined">
+                    call
+                    </span></span>
+                <input type="tel" name="phone" class="form-control" placeholder="Phone Number" aria-label="Username" 1aria-describedby="basic-addon1">
+              </div>
+
+
+              <!-- <div class="form-group">
+                <label for="work">Work</label>
+                <input type="text" class="form-control" id="work" placeholder="Enter work">
+              </div> -->
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><span class="material-symbols-outlined">
+                    work
+                    </span></span>
+                <input type="text" name="work" class="form-control" placeholder="Work" aria-label="Username" 1aria-describedby="basic-addon1">
+              </div>
+
+              <!-- <div class="form-group">
+                <label for="image">Image</label>
+                <input type="file" class="form-control-file" id="image">
+              </div> -->
+              <div class="mb-3">
+                <!-- <label for="image" class="form-label">Profile Image</label> -->
+                <input class="form-control" name="profileImage" type="file" id="formFile">
+              </div>
+              <!-- <div class="form-group">
+                <label for="address">Address</label>
+                <textarea class="form-control" id="address" rows="3" placeholder="Enter address"></textarea>
+              </div> -->
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><span class="material-symbols-outlined">
+                    home
+                    </span></span>
+                <input type="text" name="address" class="form-control" placeholder="Address" aria-label="Username" 1aria-describedby="basic-addon1">
+              </div>
+
+              <div class="form-group">
+                <!-- <label for="description">Description</label> -->
+                <span class="input-group-text" id="basic-addon1"><span class="material-symbols-outlined">
+                    description
+                    </span></span>
+                <textarea class="form-control" id="description" rows="3" name="description" placeholder="Enter description"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    
+    <script src="https://cdn.tiny.cloud/1/7b1dlff033hpnlx2aqs4qtv4twe4dc1i7uo18m5p3cnyjwnd/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+      tinymce.init({
+        selector: '#description'
+      });
+    </script>
+    
+    </section>
+    
+</body>
+
+</html>

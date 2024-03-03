@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section class="banner">
+        <div class="text-center">
+            <h1 style="font-weight: bold;">Smart Contact Manager</h1>
+            <h4>Manage your contact list with ease</h4>
+            <a th:href="@{/signin}">
+                <button class="btn bg-primary btn-lg">Get Started</button>
+            </a>
+        </div>
+        
+        <!-- <img src="../images/phone-bg.jpg" class="img-fluid" alt="picsum.photos"> -->
+    </section>
+</body>
+</html>

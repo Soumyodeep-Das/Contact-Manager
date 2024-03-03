@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{users/base::layout(~{::section})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+</head>
+
+<body>
+    <section>
+        <!-- <h1>Welcome to the View Contacts</h1>
+        <h1>Name : <span th:text="${user.name}"></span></h1>
+        <h1>Email : <span th:text="${user.email}"></span></h1>
+        <h1>About : <span th:text="${user.about}"></span></h1>
+        <h1><a th:href="@{/logout}">Log Out</a></h1> -->
+
+        <!-- <h3 th:each="n : ${contact-list}" th:text="${n}"></h3> -->
+        <!-- <h3 th:text="${contact-list}"></h3> -->
+
+        <!-- Tables -->
+        <h2 class="text-center mt-5 mb-4">User Contacts</h2>
+        <div class="container table-responsive" >
+            <div th:if="${session.delete}" class="text-center alert" th:classappend="${'alert-'+session.delete.type}" role="alert">
+                <span th:text="${session.delete.content}"></span>
+                <!-- <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+                     -->
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Contact Id</th>
+                        <th scope="col">Name </th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Action </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="c : ${contacts}">
+                        <th th:text="${c.cId}">1</th>
+                        <td>
+                            <img class="profile_picture" th:src="@{'/images/'+${c.image}}" alt="profile photo">
+                            <span th:text="${c.name}"></span></td>
+                        <td>
+                            <a th:href="@{'/user/contact/'+${c.cId}}" style="text-decoration: none;">
+                                <span th:text="${c.email}"></span>
+                            </a>
+                        </td>
+                        <td th:text="${c.phone}">@mdo</td>
+                        <td>
+                            <a href="#" th:onclick="'deleteContact(' + ${c.cId} + ')'" class="btn btn-danger btn-sm"><span class="material-symbols-outlined">
+                                    delete
+                                </span></a>
+                                <!-- th:href="@{'/user/delete/'+${c.cId}}" -->
+                            
+                            <form th:action="@{'/user/update/'+${c.cId}}" method="post">
+                                <button type="submit" class="btn btn-primary btn-sm"><span class="material-symbols-outlined">
+                                    edit
+                                </span></button>
+                            </form>
+                                <!-- <a th:href="@{'/user/update/'+${c.cId}}" class="btn btn-primary btn-sm"><span class="material-symbols-outlined">
+                                    edit
+                                </span></a> -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+
+                <li th:classappend="${currentpage == null || currentpage == 0 ? 'disabled' : ''}" class="page-item">
+                    <!-- th:classappend="${currentpage == null || currentpage == 0 ? 'disabled' : ''}"   -->
+                    <!-- th:if="${currentpage == 0}" -->
+                    <a class="page-link"  th:href="@{'/user/view-contacts/'+${currentpage-1}}">Previous</a>
+
+                </li>
+
+
+                <li class="page-item" th:classappend="${currentpage==i-1 ? 'active' : ''}" th:each="i : ${#numbers.sequence(1,totalpages)}" >
+                    
+                    <a class="page-link" href="#" th:href="@{'/user/view-contacts/'+${i-1}}"><span th:text="${i}"></span></a>
+                
+                </li>
+
+
+                <li th:classappend="${currentpage+1 != totalpages ? '' : 'disabled'}" class="page-item"> 
+                    <!-- th:classappend="${currentpage+1 != totalpages ? 'disabled' : ''}"  -->
+                    <!-- th:if="${currentpage+1 != totalpages}" -->
+                    <a class="page-link" href="#"  th:href="@{'/user/view-contacts/'+${currentpage+1}}">Next</a>
+                    
+                </li>
+            </ul>
+        </nav>
+
+    </section>
+</body>
+
+</html>

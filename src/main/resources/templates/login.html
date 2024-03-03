@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::layout(~{::section})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <section class="banner">
+        <div class="text-center">
+            <h1 style="font-weight: bold;">Smart Contact Manager</h1>
+            <h4>Log In</h4>
+        </div>
+        
+        <img src="../images/phone-bg.jpg" class="img-fluid" alt="picsum.photos">
+    </section> -->
+
+    <section class="form-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 mt-2">
+                    <div class="my-card  login-page-card">
+                        
+                        <h1 class="text-center">Login Here</h1>
+                        <div th:if="${param.error}" class="alert alert-danger text-center pb-1">
+                            <p>Invalid Username or Password</p>
+                        </div>
+                        <div th:if="${param.logout}" class="alert alert-success text-center pb-1">
+                            <p>You have been logged out</p>
+                        </div>
+                        
+                        <form th:action="@{/login-process}" method="post" th:object="${user}">
+                            <div class="mb-3 form-group">
+                                <label for="username" class="form-label">Email address</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-envelope-fill"></i> 
+                                        <span class="material-symbols-outlined">
+                                            mail
+                                        </span>
+                                    </span>
+                                    <input type="text" class="form-control" id="username"
+                                        name="username" placeholder="Enter email">
+                                </div>
+                            </div>
+                            <div class="mb-3 form-group">
+                                <label for="password" class="form-label">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-lock-fill"></i> 
+                                        <span class="material-symbols-outlined">
+                                            lock
+                                        </span>
+                                    </span>
+                                    <input type="password" class="form-control" id="password" name="password"
+                                        placeholder="Enter password">
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Log In</button>
+                                <a th:href="@{/signup}">
+                                    <button type="button" class="btn btn-success">SignUp</button>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
